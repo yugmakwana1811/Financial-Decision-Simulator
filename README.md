@@ -19,6 +19,16 @@ Open the local address shown by Streamlit. Click **Load official demo** to use t
 pytest -q
 ```
 
+## Vercel deployment
+
+The original Streamlit app is preserved for local use. A browser-only, Vercel-compatible version lives in `web/`; it uses the same transparent formulas with no backend, database, or external API.
+
+```bash
+npx vercel --prod
+```
+
+Vercel serves `web/index.html` using the root `vercel.json` configuration. Authenticate first with `npx vercel login` if needed.
+
 ## What is included
 
 - Nine main modules, four purchase scenarios, comparison, what-if analysis, stress testing, visual analytics, learning content, methodology and privacy/disclaimer screens.

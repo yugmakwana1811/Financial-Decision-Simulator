@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A transparent financial decision simulator for comparing cash, EMI, wait-and-save, and lower-cost alternatives." />
+    <title>Financial Decision Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">CBSE Skill Expo • Financial Literacy</p>
+        <h1>Understand the consequences<br />before making the decision.</h1>
+        <p class="lede">Compare cash, EMI, waiting, and a lower-cost alternative using transparent mathematics—not a black-box recommendation.</p>
+      </div>
+      <button id="demo" class="button">Load official laptop demo</button>
+    </header>
+
+    <main>
+      <p class="notice"><strong>Educational simulator:</strong> All outputs are based on your inputs and stated assumptions. They are not financial, investment, banking, legal, or tax advice.</p>
+      <nav class="tabs" aria-label="Application sections">
+        <a href="#profile">Financial profile</a><a href="#purchase">Decision simulator</a><a href="#comparison">Compare scenarios</a><a href="#stress">Stress test</a><a href="#learn">Learn</a>
+      </nav>
+
+      <section id="profile" class="panel">
+        <div class="section-title"><div><p class="eyebrow">INPUTS</p><h2>Financial profile</h2></div><p>Use fictional or non-sensitive monthly figures.</p></div>
+        <div class="form-grid">
+          <label>Monthly primary income <input id="income" type="number" min="0" value="50000" /></label>
+          <label>Other recurring income <input id="otherIncome" type="number" min="0" value="0" /></label>
+          <label>Essential monthly expenses <input id="essential" type="number" min="0" value="25000" /></label>
+          <label>Non-essential monthly expenses <input id="nonEssential" type="number" min="0" value="8000" /></label>
+          <label>Available savings / emergency fund <input id="savings" type="number" min="0" value="150000" /></label>
+          <label>Existing monthly EMI / debt <input id="existingDebt" type="number" min="0" value="2000" /></label>
+          <label>Monthly goal contribution <input id="goalContribution" type="number" min="0" value="5000" /></label>
+          <label>Optional goal name <input id="goalName" type="text" value="Higher education" /></label>
+        </div>
+        <div class="metric-grid" id="baselineMetrics"></div>
+        <p class="formula">CALCULATION • monthly surplus = income − essential expenses − non-essential expenses − existing debt</p>
+      </section>
+
+      <section id="purchase" class="panel">
+        <div class="section-title"><div><p class="eyebrow">INPUTS & ASSUMPTIONS</p><h2>Major purchase decision</h2></div><p>Change any value to recalculate every scenario.</p></div>
+        <div class="form-grid">
+          <label>Purchase description <input id="description" type="text" value="Laptop" /></label>
+          <label>Purchase price <input id="price" type="number" min="1" value="60000" /></label>
+          <label>Planned down payment <input id="downPayment" type="number" min="0" value="10000" /></label>
+          <label>Annual interest rate % <input id="rate" type="number" min="0" step="0.5" value="12" /></label>
+          <label>EMI tenure (months) <input id="tenure" type="number" min="1" step="1" value="12" /></label>
+          <label>Lower-cost alternative price <input id="alternative" type="number" min="1" value="45000" /></label>
+          <label>Wait period (months) <input id="delay" type="number" min="0" value="6" /></label>
+          <label>Monthly saving while waiting <input id="waitSaving" type="number" min="0" value="8000" /></label>
+          <label>Price change during wait % <input id="waitChange" type="number" step="0.5" value="0" /></label>
+          <label>Hypothetical annual growth % <input id="growth" type="number" min="0" step="0.5" value="6" /></label>
+          <label>Opportunity-cost period (years) <input id="growthYears" type="number" min="0" step="0.5" value="3" /></label>
+        </div>
+        <p id="validation" class="validation" role="alert"></p>
+      </section>
+
+      <section id="comparison" class="panel">
+        <div class="section-title"><div><p class="eyebrow">CALCULATIONS</p><h2>Four scenario comparison</h2></div><p>Metric leaders are factual under current inputs, not universal recommendations.</p></div>
+        <div id="scenarioCards" class="scenario-grid"></div>
+        <div class="table-wrap"><table><thead><tr><th>Scenario</th><th>Immediate payment</th><th>Monthly EMI</th><th>Total cost</th><th>Interest</th><th>Savings remaining</th><th>Monthly surplus / deficit</th><th>Emergency coverage</th></tr></thead><tbody id="comparisonBody"></tbody></table></div>
+        <div id="tradeoffs" class="tradeoffs"></div>
+        <div class="chart-section"><h3>Visual analytics</h3><p>Question: how do total cost, liquidity, and monthly cash flow differ?</p><div id="charts" class="charts"></div></div>
+      </section>
+
+      <section id="stress" class="panel">
+        <div class="section-title"><div><p class="eyebrow">ASSUMPTION-BASED SIMULATION</p><h2>Financial stress test</h2></div><p>EMI remains a monthly obligation during the selected hypothetical shock.</p></div>
+        <div class="form-grid compact">
+          <label>Scenario <select id="stressScenario"><option>Cash now</option><option>EMI</option><option>Wait & save</option><option>Lower-cost alternative</option></select></label>
+          <label>Shock <select id="shock"><option value="income10">Income decreases by 10%</option><option value="income25">Income decreases by 25%</option><option value="expense15">Essential expenses increase by 15%</option><option value="expense25">Unexpected expense of Rs. 25,000</option><option value="expense50">Unexpected expense of Rs. 50,000</option><option value="combined">Combined: 20% income fall + Rs. 25,000 expense</option><option value="custom">Custom shock</option></select></label>
+          <label>Custom income fall % <input id="customIncome" type="number" min="0" max="100" value="0" /></label>
+          <label>Custom essential-expense rise % <input id="customExpenseRise" type="number" min="0" value="0" /></label>
+          <label>Custom unexpected expense <input id="customExpense" type="number" min="0" value="0" /></label>
+        </div>
+        <div id="stressOutput" class="stress-grid"></div>
+      </section>
+
+      <section id="learn" class="panel learning">
+        <p class="eyebrow">LEARN THE CONCEPTS</p><h2>Understand the words behind the numbers</h2>
+        <details open><summary>EMI, principal, rate and tenure</summary><p>An EMI is a monthly loan instalment. Principal is the amount borrowed; interest is the cost of borrowing; tenure is the number of monthly instalments.</p></details>
+        <details><summary>Liquidity, emergency fund and resilience</summary><p>Liquidity means money available immediately. Emergency coverage shows how many months of essential expenses available savings could cover. Stress testing asks how these values change under hypothetical setbacks.</p></details>
+        <details><summary>Assumptions and projections</summary><p>A future-value or savings-path result is a projection, not a guarantee. It depends on stated assumptions such as constant income, expenses, prices, and growth rate.</p></details>
+        <p class="privacy"><strong>Privacy:</strong> This browser-only version stores values in the current page session. Do not enter bank accounts, cards, CVVs, PINs, OTPs, passwords, Aadhaar, PAN, or login credentials.</p>
+      </section>
+    </main>
+    <footer>Financial Decision Simulator • Transparent calculations • You decide which trade-offs matter</footer>
+    <script src="app.js"></script>
+  </body>
+</html>
