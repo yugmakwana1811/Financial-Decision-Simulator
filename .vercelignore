@@ -1,0 +1,14 @@
+# The Vercel deployment is the browser-only version in web/.
+# Preserve these local Streamlit sources in GitHub, but do not upload them as Functions.
+app.py
+modules/
+pages/
+tests/
+data/
+documentation/
+requirements.txt
+.github/
+README.md
+.pytest_cache/
+__pycache__/
+**/__pycache__/
