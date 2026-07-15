@@ -1,0 +1,36 @@
+Test ID,Module,Purpose,Expected result,Status,Notes
+TC-01,Calculations,Monthly surplus standard,15000,PASS,Automated
+TC-02,Calculations,Monthly deficit,-5000,PASS,Automated
+TC-03,Calculations,Emergency coverage standard,6 months,PASS,Automated
+TC-04,Calculations,Emergency zero essential,None,PASS,Automated
+TC-05,Calculations,Simple interest,Formula output,PASS,Automated
+TC-06,Calculations,Compound amount,Formula output,PASS,Automated
+TC-07,Calculations,Zero interest EMI,Principal/months,PASS,Automated
+TC-08,Calculations,Positive interest EMI,Formula output,PASS,Automated
+TC-09,Calculations,Zero principal EMI,0,PASS,Automated
+TC-10,Calculations,Negative rate rejected,ValueError,PASS,Automated
+TC-11,Calculations,Zero tenure rejected,ValueError,PASS,Automated
+TC-12,Calculations,Total repayment,EMI*months,PASS,Automated
+TC-13,Calculations,Total interest,repayment-principal,PASS,Automated
+TC-14,Calculations,Future value,Formula output,PASS,Automated
+TC-15,Calculations,Goal delay,amount/contribution,PASS,Automated
+TC-16,Calculations,Zero goal contribution,None,PASS,Automated
+TC-17,Validation,Zero purchase price,error,PASS,Manual/UI
+TC-18,Validation,Down payment above price,error,PASS,Manual/UI
+TC-19,Validation,Negative profile values,error,PASS,Manual/UI
+TC-20,Scenario,Cash total cost,equals price,PASS,Automated
+TC-21,Scenario,EMI includes interest,total exceeds principal,PASS,Automated
+TC-22,Scenario,Full down payment,zero EMI,PASS,Automated
+TC-23,Scenario,Wait saving,adds waiting savings,PASS,Automated
+TC-24,Scenario,Wait price change,uses stated assumption,PASS,Automated
+TC-25,Scenario,Alternative total cost,equals alternative price,PASS,Automated
+TC-26,Scenario,No goal,delay unavailable,PASS,Automated
+TC-27,Scenario,Very large values,no crash,PASS,Automated
+TC-28,Stress,10 percent income shock,reduced surplus,PASS,Automated
+TC-29,Stress,25 percent income shock,reduced surplus,PASS,Automated
+TC-30,Stress,Essential expense shock,reduced coverage,PASS,Automated
+TC-31,Stress,25000 unexpected expense,reduced savings,PASS,Automated
+TC-32,Stress,50000 unexpected expense,reduced savings,PASS,Automated
+TC-33,Stress,Combined shock,both effects applied,PASS,Automated
+TC-34,Stress,EMI after shock,EMI remains obligation,PASS,Automated
+TC-35,Integration,Comparison frame,four scenarios,PASS,Automated

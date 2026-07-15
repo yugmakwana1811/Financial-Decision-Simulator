@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Streamlit local state
+.streamlit/secrets.toml
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/
